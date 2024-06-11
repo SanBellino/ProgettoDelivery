@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crea Nuovo Negozio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" /> 
+</head>
+<body>
+    <h1>Crea Nuovo Negozio</h1>
+    <form th:action="@{/shops/create}" th:object="${shop}" method="post">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" th:field="*{name}" required><br><br>
+        
+        <label for="address">Indirizzo:</label>
+        <input type="text" id="address" th:field="*{address}" required><br><br>
+
+        <button type="submit">Crea Negozio</button>
+    </form>
+</body>
+</html>

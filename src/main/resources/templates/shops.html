@@ -1,0 +1,19 @@
+
+
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/shopcs.css}" />
+    <title>Elenco Negozi</title>
+</head>
+<body>
+    <h1>Negozi</h1>
+    <ul>
+        <li th:each="shop : ${shops}">
+            <a th:href="@{/shops/{id}(id=${shop.id})}" th:text="${shop.name}"></a><br/>
+            <span th:text="'Indirizzo: ' + ${shop.address}"></span>
+        </li>
+    </ul>
+    <a th:href="@{/shops/new}">Aggiungi un negozio</a>
+</body>
+</html>

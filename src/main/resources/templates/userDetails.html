@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dettagli Utente</title>
+    <link rel="stylesheet" th:href="@{/css/userdet.css}" />
+</head>
+<body>
+    <h1>Dettagli Utente</h1>
+    <form th:action="@{/users/{id}/edit(id=${user.id})}" method="post">
+        <p>ID: <span th:text="${user.id}"></span></p>
+        <p>Username: <input type="text" name="user" th:value="${user.user}" /></p>
+        <p>Password: <input type="password" name="password" th:value="${user.password}" /></p>
+        <p>Email: <input type="email" name="email" th:value="${user.email}" /></p>
+        <p>Ruolo: <input type="text" name="role" th:value="${user.role}" /></p>
+        <button type="submit">Salva Modifiche</button>
+    </form>
+    <form th:action="@{/users/{id}/delete(id=${user.id})}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo utente?');">
+        <button type="submit">Elimina Utente</button>
+    </form>
+    <a th:href="@{/users}">Torna all'elenco utenti</a>
+</body>
+</html>

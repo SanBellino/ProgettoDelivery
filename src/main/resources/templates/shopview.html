@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dettagli Negozio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div th:if="${shop == null}">
+        <p>Negozio non trovato.</p>
+    </div>
+
+    <div th:if="${shop != null}">
+        <h1 th:text="${shop.name}"></h1>
+        <h1 th:text="'Indirizzo: ' + ${shop.address}"></h1>
+
+        <h2>Modifica Negozio</h2>
+        <form th:action="@{/shops/{id}/editShop (id=${shop.id})}" method="post">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" th:value="${shop.name}" required><br><br>
+
+            <label for="address">Indirizzo:</label>
+            <input type="text" id="address" name="address" th:value="${shop.address}" required><br><br>
+
+            <button class="button1" type="submit">Salva Modifiche</button>
+        </form>
+        <br>
+        <br>
+        <form th:action="@{/shops/{id}/delete(id=${shop.id})}" method="post">
+            <button class="button3" type="submit">Elimina Negozio</button>
+        </form>
+        
+        <br>
+        <br>
+        <a th:href="@{/shops}">Torna all'elenco negozi</a>
+    </div>
+</body>
+</html>
